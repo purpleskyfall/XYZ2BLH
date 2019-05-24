@@ -19,7 +19,7 @@ import argparse
 import math
 
 A = 6378137.0
-B = 6356752.3142
+B = 6356752.314245
 
 
 def xyz2blh(x, y, z):
@@ -60,7 +60,7 @@ def xyz2blh(x, y, z):
     lat0 = 0
     latitude = math.atan(z / xy_hypot)
 
-    while abs(latitude - lat0) > 1E-5:
+    while abs(latitude - lat0) > 1E-8:
         lat0 = latitude
         N = A / math.sqrt(1 - e**2 * math.sin(lat0)**2)
         latitude = math.atan((z + e**2 * N * math.sin(lat0)) / xy_hypot)
