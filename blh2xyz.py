@@ -21,7 +21,7 @@ import argparse
 import math
 
 A = 6378137.0
-B = 6356752.3
+B = 6356752.314245
 
 
 def blh2xyz(latitude, longitude, height):
