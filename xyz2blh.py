@@ -60,7 +60,7 @@ def xyz2blh(x, y, z):
     lat0 = 0
     latitude = math.atan(z / xy_hypot)
 
-    while abs(latitude - lat0) > 1E-8:
+    while abs(latitude - lat0) > 1E-9:
         lat0 = latitude
         N = A / math.sqrt(1 - e**2 * math.sin(lat0)**2)
         latitude = math.atan((z + e**2 * N * math.sin(lat0)) / xy_hypot)
