@@ -48,12 +48,8 @@ def xyz2blh(x, y, z):
     """
     e = math.sqrt(1 - (B**2)/(A**2))
     # calculate longitude, in radians
-    if x >= 0:
-        longitude = math.atan(y/x)
-    elif y >= 0:
-        longitude = math.pi + math.atan(y/x)
-    else:
-        longitude = -math.pi + math.atan(y/x)
+    longitude = math.atan2(y, x)
+
     # calculate latitude, in radians
     xy_hypot = math.hypot(x, y)
 
