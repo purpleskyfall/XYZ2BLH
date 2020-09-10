@@ -60,8 +60,15 @@ def xyz2blh(x, y, z):
         lat0 = latitude
         N = A / math.sqrt(1 - e**2 * math.sin(lat0)**2)
         latitude = math.atan((z + e**2 * N * math.sin(lat0)) / xy_hypot)
+
     # calculate height, in meters
-    height = z / math.sin(latitude) - N * (1 - e**2)
+    N = A / math.sqrt(1 - e**2 * math.sin(latitude)**2)
+    if abs(latitude) < math.pi / 4:
+        R, phi = math.hypot(xy_hypot, z), math.atan(z / xy_hypot)
+        height = R * math.cos(phi) / math.cos(latitude) - N
+    else:
+        height = z / math.sin(latitude) - N * (1 - e**2)
+
     # convert angle unit to degrees
     longitude = math.degrees(longitude)
     latitude = math.degrees(latitude)
